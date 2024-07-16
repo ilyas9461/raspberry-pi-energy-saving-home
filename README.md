@@ -1,33 +1,31 @@
-### **Raspberry Pi Tasarruflu Ev**
+### **Raspberry Pi Energy Saving Home**
 
-Son zamanlarda akıllı evler gözde kavramlardandır. Akıllı evlerde tasarruf için birçok senaryo uygulanmaktadır. Çeşitli sensörler kullanılarak evin durumu gözlenerek tasarruf durumu belirlendiğinde lambalar vb. cihazlar kapatılmaktadır. Hareket sensörleri (PIR vb.) ile genellikle hareket algılanmaktadır. Fakat hareket sensörleri hareketsizlik durumunda odadaki kişileri tespit edememektedir. Bu durumda kamera kullanmak daha iyi sonuçlar elde edilmesini sağlamaktadır. Aydınlık karanlık durumlarında da kamera ve hareket sensörlerinin beraber kullanılması daha iyi sonuç elde edlmesini sağlamaktadır.
+Recently, smart homes are popular concepts. Many scenarios are implemented for savings in smart homes. When the saving status is determined by observing the condition of the house using various sensors, lamps, etc. devices are turned off. Movement is usually detected with motion sensors (PIR, etc.). However, motion sensors cannot detect people in the room in case of inactivity. In this case, using a camera provides better results. Using camera and motion sensors together in bright and dark situations provides better results.
 <p>
 <img src="./assets/20210720_164401_raspberry_pi_circuit_note_fig2a.jpg" width="60%" height="50%" border: 5px solid #555>
 </p>
 
-Bu amaçla bir odada Raspberry Pi (RPi) ile kamera modülü üzerinden yüz tanıma işlemi gerçekleştirilmiştir. Yüz tanıma sonucunda oda da hiç kimse yoksa ve belli bir süre bu durumda ise odanın ışığı lamba-priz modülüne kablosuz olarak gönderilen kapatma bilgisi ile odada bulunan lamba ve diğer çalışan elektronik cihazlar kapatılmaktadır.
+For this purpose, facial recognition was carried out in a room with a Raspberry Pi (RPi) and camera module. As a result of facial recognition, if there is no one in the room and this is the case for a certain period of time, the lamp and other working electronic devices in the room are turned off with the shutdown information sent wirelessly to the lamp-socket module.
 
-Hareket sensöründen veya RPi kamera üzerinden yüz tanıma bilgisi oluştuğunda ise lamba-priz modülüne açma bilgisi kablosuz olarak gönderilmektedir.
+When facial recognition information is obtained from the motion sensor or the RPi camera, the switching information is sent wirelessly to the lamp-socket module.
 
 
-Lamba modülü olarakta Arduino Leonardo ile birlikte NRF24L01 kablosuz modül ve röle modülü kullanılmıştır.
+NRF24L01 wireless module and relay module were used together with Arduino Leonardo as the lamp module.
 
 <p>
 <img src="./assets/lamba_modul.jpg" width="70%" height="70%" border: 5px solid #555>
 </p>
 
 
-Böylece herhangi bir odada hiç kimse yokken o odada bulunan lambalar ve elektronik cihazlar gereksiz yere çalışmamaktadır. Bu durum da ev içersinde veya herhangi bir ofis benzeri ortamda elektrik tasarrufu sağlayacaktır.
+Thus, when there is no one in a room, the lamps and electronic devices in that room do not work unnecessarily. This will save electricity at home or in any office-like environment.
 
-Ayrıca bir ev içersinde düğmelere-butonlara gerek kalmadan bütün evdeki lambalar otomatik olarak kendiliğinden açılıp kapanabilecektir. Wifi özelliği olan bir RPi modülü kullanılırsa da evdeki durum web üzerinden izlenebilecek ve sistem ev güvenliği için de kullanılabilecektir.
+In addition, all the lamps in the house will be able to turn on and off automatically without the need for buttons. If an RPi module with Wi-Fi feature is used, the situation at home can be monitored via the web and the system can also be used for home security.
 
-Burada RPi kamera üzerinden yüz tanıma ve gerekirse web bağlantısı için kullanılmaktadır. Maliyet açısından bu temel özelliklere uygun RPi seçilebilir. Ayrıca RPi ile birlikte programlama kolaylığı açısında Arduino UNO bir NRF24L01 wifi modül ile kullanılmıştır. RPi kablosuz komutları Arduino-NRF modül üzerinden alıp göndermektedir.
+Here, RPi is used for facial recognition via camera and web connection if necessary. In terms of cost, RPi that meets these basic features can be selected. Additionally, Arduino UNO was used with an NRF24L01 wifi module for ease of programming with RPi. RPi receives and sends wireless commands via the Arduino-NRF module.
 
-RPi de işlemler (Yüz tanıma, USB-seri haberleşme vb.) Python dili ile gerçekleşirilirken Arduino kartlarda C++ dili kullanılmıştır.
-
-### Kullanılan Teknolojiler :
+While operations in RPi (Face recognition, USB-serial communication, etc.) are carried out with Python language, C++ language is used in Arduino cards.
 
 - Rasberry Pi 3B
-- Python programlama dili, yüz tanıma, usb-seri haberleşme
-- NRF24L01 wifi haberleşme
-- Akıllı evler
+- Python programming language
+- NRF24L01 wifi 
+- Smart Home
